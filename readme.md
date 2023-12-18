@@ -1,4 +1,4 @@
-# Kendime Örnek Uygulamalar
+# Django - HTMX - Rest FrameWork - Basit Uygulamalar
 
 Bu proje, yalnızca kendimi geliştirmek amaçlı saçma sapan örneklerle doludur ama merak ediyorsanız elbette bakabilirsiniz. Projede django başta olmak üzere rest-framework, htmx, bootstrap ve bazı detayları işledim (aşağıda detaylar var). Bazı fazlalık dosyalar var silmek istemedim çünkü bu projenin üzerine inşa etmeye devam edeceğim ve o fazlalıklar işe yarar hale gelecek. Umarım okuyup vakit ayırdığınız zaman ziyan olmaz çünkü zaman çok kıymetli ve faydasız olduğunu düşündüğünüz an bence projeyi incelemeyi bırakın.
 
@@ -7,7 +7,7 @@ Bu proje, yalnızca kendimi geliştirmek amaçlı saçma sapan örneklerle dolud
 Projeyi yerel bilgisayarınıza klonlayın:
 
 ```bash
-git clone [proje-repo-linki.git]
+git clone (https://github.com/fahridgn/Kendime-Ornek-Uygulamalar.git)
 ```
 
 Proje klasörüne gidin:
