@@ -1,0 +1,34 @@
+{% block content %}
+    {% comment %} theme_update.html {% endcomment %}
+    <div id="method_target_id_{{ theme.id }}">
+    <form 
+    hx-post="{% url 'theme_update' theme.id %}"
+    hx-target="#method_target_id_{{ theme.id }}"
+    hx-swap="outerHTML"
+    hx-trigger="submit"
+    id="theme_update_form"
+    >
+        <div class="row g-2 justify-content-between">
+            {% csrf_token %}
+            <div class="col-auto">
+                <input 
+                    type="text"
+                    class="form-control" 
+                    name="name" 
+                    value="{{ theme.name }}" />
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-primary ms-1" type="submit" id="theme_submit_btn">Onayla</button>
+                <button 
+                type="button"
+                hx-get="{% url 'theme' %}"
+                hx-target="body"
+                hx-swap="innerHTML"
+                class="btn btn-danger ms-1" 
+                id="theme_delete_btn">İptal</button>
+            </div>
+        </div>
+    </form>
+    </div>
+{% endblock content %}
+

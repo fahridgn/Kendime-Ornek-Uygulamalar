@@ -1,0 +1,32 @@
+{% block content %}
+{% comment %} theme_detail.html {% endcomment %}
+<li class="list-group-item" id="method_target_id_{{theme.id}}">
+    <div class="row g-2 justify-content-between">
+        <div class="col-auto">
+            <span>{{ theme.name }}</span>
+        </div>
+        <div class="col-auto">
+            <div class="row">
+                <div class="col-auto">
+                    <a 
+                    hx-get="{% url "theme_update" theme.id %}"
+                    hx-select="#theme_update_form"
+                    hx-swap="outerHTML"
+                    class="btn btn-primary">Edit</a>
+                </div>
+                
+                <div class="col-auto">
+                    <form
+                    hx-post="{% url "theme_delete" theme.id %}"
+                    hx-target="body"
+                    hx-swap="innerHTML"
+                    hx-confirm="Are you sure?">
+                    {% csrf_token %}
+                    <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+{% endblock content %}

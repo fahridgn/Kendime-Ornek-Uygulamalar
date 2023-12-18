@@ -1,0 +1,72 @@
+{% extends "index.html" %} {% block content %}
+{% comment %} theme_list.html {% endcomment %}
+<ul class="list-group m-5">
+    <li class="list-group-item">
+        <form 
+        hx-post="{% url 'theme_add' %}"
+        hx-target="#ul_target"
+        hx-swap="afterbegin"
+        hx-trigger="submit"
+        id="theme_add_form"
+        >
+            <div class="row g-2 justify-content-between">
+                {% csrf_token %}
+                <div class="col-auto">
+                    <div class="row g-4 justify-content between">
+                        <div class="col-auto">
+                            <input placeholder="name" type="text" class="form-control" name="name" />
+                        </div>
+                        <div class="col-auto">
+                            <input placeholder="tag" type="text" class="form-control" name="tag" />
+                        </div>
+                        <div class="col-auto">
+                            <input placeholder="attrs" type="text" class="form-control" name="attrs" />
+                        </div>
+                        <div class="col-auto">
+                            <input placeholder="value" type="text" class="form-control" name="value" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary ms-1" type="submit" id="theme_submit_btn">Onayla</button>
+                    <button class="btn btn-secondary ms-1" type="reset">Reset</button>
+                </div>
+            </div>
+        </form>
+    </li>
+</ul>
+<ul class="list-group m-5" id="ul_target">
+  {% for theme in themes %}
+  <li class="list-group-item" id="method_target_id_{{theme.id}}">
+    <div class="row g-2 justify-content-between">
+        <div class="col-auto pt-2">
+            <span>{{ theme.name }}</span>
+        </div>
+        <div class="col-auto">
+            <div class="row">
+                <div class="col-auto">
+            <a 
+            hx-get="{% url "theme_update" theme.id %}"
+            hx-select="#method_target_id_{{ theme.id }}"
+            hx-target="#method_target_id_{{theme.id}}"
+            hx-swap="innerHTML"
+            class="btn btn-primary">Edit</a>
+        </div>
+        <div class="col-auto">
+            <form
+            hx-post="{% url "theme_delete" theme.id %}"
+            hx-target="body"
+            hx-swap="innerHTML"
+            hx-confirm="Are you sure?">
+            {% csrf_token %}
+            <button class="btn btn-danger">Delete</button>
+            </form>
+            </div>
+        </div>
+
+        </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}
